@@ -179,7 +179,7 @@ class ZMQ
             \ZMQ::SOCKET_PULL => true,
             \ZMQ::SOCKET_SUB => true,
             \ZMQ::SOCKET_REQ => true,
-            \ ZMQ::SOCKET_REP => true,
+            \ZMQ::SOCKET_REP => true,
             \ZMQ::SOCKET_ROUTER => true,
             \ZMQ::SOCKET_DEALER => true,
         );
