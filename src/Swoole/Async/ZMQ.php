@@ -155,10 +155,10 @@ class ZMQ
                 $messages = $this->socket->recvmulti(\ZMQ::MODE_NOBLOCK);
                 if (false !== $messages)
                 {
-                    foreach ($messages as $message)
-                    {
-                        call_user_func($this->onMessage, $message);
-                    }
+                    //foreach ($messages as $message)
+                    //{
+                        call_user_func($this->onMessage, $messages);
+                    //}
                 }
             }
 
