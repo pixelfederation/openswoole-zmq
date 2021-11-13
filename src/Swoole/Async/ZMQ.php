@@ -140,7 +140,7 @@ class ZMQ
 
     function handleReadEvent()
     {
-        while (true)
+        while (!$this->closed)
         {
             $events = $this->socket->getSockOpt(\ZMQ::SOCKOPT_EVENTS);
 
@@ -209,7 +209,7 @@ class ZMQ
             }
             catch (\ZMQSocketException $e)
             {
-                call_user_func($this->onMessage, $e);
+                call_user_func($this->onError, $e);
 
                 return;
             }
