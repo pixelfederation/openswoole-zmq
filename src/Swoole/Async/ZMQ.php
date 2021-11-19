@@ -218,6 +218,11 @@ class ZMQ
         swoole_event_set($this->fd, null, null, SWOOLE_EVENT_READ);
         $this->listening = false;
     }
+
+    public function getSocket(): \ZMQSocket
+    {
+        return $this->socket;
+    }
 }
 
 
