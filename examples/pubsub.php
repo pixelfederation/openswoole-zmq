@@ -1,23 +1,32 @@
 <?php
-require_once __DIR__ . '/../src/Swoole/Async/ZMQ.php';
 
-$sub = new Swoole\Async\ZMQ(ZMQ::SOCKET_SUB);
+declare(strict_types=1);
 
-$sub->on('Message', function ($msg)
-{
-    echo "Received: $msg\n";
-});
+use PixelFederation\OpenSwooleZMQ\PubConnection;
+use PixelFederation\OpenSwooleZMQ\SubConnection;
 
-$sub->bind('tcp://0.0.0.0:5556');
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$sub = new SubConnection(
+    'tcp://0.0.0.0:5556',
+    static function ($msg): void {
+        echo "Received: $msg\n";
+    }
+);
+
+$sub->bind();
 $sub->subscribe('foo');
 
-$pub = new Swoole\Async\ZMQ(ZMQ::SOCKET_PUB);
-$pub->connect('tcp://127.0.0.1:5556');
+$pub = new PubConnection('tcp://127.0.0.1:5556');
+$pub->connect();
 
-Swoole\Timer::tick(1000, function () use ($pub)
-{
-    static $i = 0;
-    $msg = "foo " . $i++;
-    echo "Sending: $msg\n";
-    $pub->send($msg);
-});
+Swoole\Timer::tick(
+    1000,
+    static function () use ($pub): void {
+        static $i = 0;
+        $i++;
+        $msg = "foo $i";
+        echo "Sending: $msg\n";
+        $pub->send($msg);
+    }
+);

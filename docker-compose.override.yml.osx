@@ -1,0 +1,26 @@
+version: '3.5'
+
+# as root run: chown www-data:www-data /srv/www
+# and then
+# https://medium.com/@marickvantuil/speed-up-docker-for-mac-with-mutagen-14c2a2c9cba7
+# mutagen project start
+# to disable syncing run `mutagen project terminate`
+# in PHPSTORM use a custom Docker container for quality tools with this volume mapping:
+# server-swoole-zmq-swoole_zmq_volume:/srv/www
+# until it is possible to use PHP from docker-compose in quality tools again
+volumes:
+  swoole_zmq_volume: {}
+
+services:
+  # PHP
+  swoole-zmq-php74:
+    volumes:
+      - swoole_zmq_volume:/srv/www
+
+  swoole-zmq-php80:
+    volumes:
+      - swoole_zmq_volume:/srv/www
+
+  swoole-zmq-php81:
+    volumes:
+      - swoole_zmq_volume:/srv/www

@@ -1,0 +1,47 @@
+version: '3.5'
+
+networks:
+  default:
+    name: docker.pxfd.tech
+    external: true
+
+services:
+  # PHP
+  swoole-zmq-php74:
+    container_name: swoole-zmq-php74
+    build: ./docker/php
+    volumes:
+      - .:/srv/www:delegated
+      - ~/.ssh:/var/www/.ssh
+      - ~/.composer:/var/www/.composer
+    environment:
+      - XDEBUG_CONFIG=idekey=PHPSTORM
+      - USER_ID=${USER_ID:-1000}
+      - PHP_JENKINS_ENV=false
+      - COMPOSER_MEMORY_LIMIT=-1
+
+  swoole-zmq-php80:
+    container_name: swoole-zmq-php80
+    build: ./docker/php8
+    volumes:
+      - .:/srv/www:delegated
+      - ~/.ssh:/var/www/.ssh
+      - ~/.composer:/var/www/.composer
+    environment:
+      - XDEBUG_CONFIG=idekey=PHPSTORM
+      - USER_ID=${USER_ID:-1000}
+      - PHP_JENKINS_ENV=false
+      - COMPOSER_MEMORY_LIMIT=-1
+
+  swoole-zmq-php81:
+    container_name: swoole-zmq-php81
+    build: ./docker/php81
+    volumes:
+      - .:/srv/www:delegated
+      - ~/.ssh:/var/www/.ssh
+      - ~/.composer:/var/www/.composer
+    environment:
+      - XDEBUG_CONFIG=idekey=PHPSTORM
+      - USER_ID=${USER_ID:-1000}
+      - PHP_JENKINS_ENV=false
+      - COMPOSER_MEMORY_LIMIT=-1
