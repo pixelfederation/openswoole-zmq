@@ -1,11 +1,16 @@
 <?php
-require_once __DIR__ . '/../src/Swoole/Async/ZMQ.php';
 
-$zmq = new Swoole\Async\ZMQ();
+declare(strict_types=1);
 
-$zmq->on('Message', function ($msg)
-{
-    echo "Received: $msg\n";
-});
+use PixelFederation\OpenSwooleZMQ\PullConnection;
 
-$zmq->bind('tcp://0.0.0.0:5555');
+require_once __DIR__ . '/../src/OpenSwoole/ZMQ/Connection.php';
+
+$zmq = new PullConnection(
+    'tcp://0.0.0.0:5555',
+    static function ($msg): void {
+        echo "Received: $msg\n";
+    }
+);
+
+$zmq->bind();
