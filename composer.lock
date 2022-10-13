@@ -2060,16 +2060,16 @@
         },
         {
             "name": "openswoole/ide-helper",
-            "version": "4.11.5",
+            "version": "4.11.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/openswoole/ide-helper.git",
-                "reference": "380827747c30890cdafbf9aa5ae34d9c7bbeb9db"
+                "reference": "6e8831af6dd34e24456cb98272373b030bce94df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openswoole/ide-helper/zipball/380827747c30890cdafbf9aa5ae34d9c7bbeb9db",
-                "reference": "380827747c30890cdafbf9aa5ae34d9c7bbeb9db",
+                "url": "https://api.github.com/repos/openswoole/ide-helper/zipball/6e8831af6dd34e24456cb98272373b030bce94df",
+                "reference": "6e8831af6dd34e24456cb98272373b030bce94df",
                 "shasum": ""
             },
             "require": {
@@ -2092,9 +2092,9 @@
             "description": "IDE help files for Open Swoole.",
             "support": {
                 "issues": "https://github.com/openswoole/ide-helper/issues",
-                "source": "https://github.com/openswoole/ide-helper/tree/4.11.5"
+                "source": "https://github.com/openswoole/ide-helper/tree/4.11.6"
             },
-            "time": "2022-07-24T09:46:27+00:00"
+            "time": "2022-08-03T13:28:52+00:00"
         },
         {
             "name": "pdepend/pdepend",
